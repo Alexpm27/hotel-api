@@ -1,10 +1,10 @@
 package com.example.hotelapi.persintence.models;
+import com.example.hotelapi.persintence.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import java.util.Calendar;
 
 @Entity
 @Setter
@@ -26,12 +26,16 @@ public class Reservation {
     private String hour;
 
     @Column(nullable = false)
-    private String status;
+    private Status status;
 
     @ManyToOne
     private Room room;
 
     @ManyToOne
     private User user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
 
 }

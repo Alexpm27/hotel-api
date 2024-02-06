@@ -20,11 +20,15 @@ public class User {
     @NotBlank
     private String name;
 
+    private String lastName;
+
     @Column(unique=true)
     @Email
     private String email;
 
     private String password;
+
+    private Long phoneNumber;
 
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;
