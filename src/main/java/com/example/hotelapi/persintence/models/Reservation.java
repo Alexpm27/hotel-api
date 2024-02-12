@@ -34,6 +34,7 @@ public class Reservation {
     private String hourReserved;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToOne

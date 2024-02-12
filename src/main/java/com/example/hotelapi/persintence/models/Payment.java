@@ -26,6 +26,7 @@ public class Payment {
     private String key;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @OneToOne(cascade = CascadeType.ALL)

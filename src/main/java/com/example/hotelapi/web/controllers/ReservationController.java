@@ -7,23 +7,26 @@ import com.example.hotelapi.web.dtos.response.BaseResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RestController("reservation")
-@AllArgsConstructor
-@NoArgsConstructor
+@RequestMapping("reservation")
 public class ReservationController {
 
-    private IReservationService service;
+    private final IReservationService service;
+
+    public ReservationController(IReservationService service) {
+        this.service = service;
+    }
 
     @PostMapping("create/v1/user/{userId}/room/{roomId}")
     public ResponseEntity<BaseResponse> create(@Valid @RequestBody CreateReservationRequest request,
                                                @Valid @PathVariable Long userId,
-                                               @Valid @PathVariable Long roomId){
+                                               @Valid @PathVariable Long roomId) {
         return service.create(request, userId, roomId).apply();
     }
 

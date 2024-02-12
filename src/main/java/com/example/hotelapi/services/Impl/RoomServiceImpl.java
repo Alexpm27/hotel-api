@@ -10,10 +10,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class RoomServiceImpl implements IRoomService {
 
     private final IRoomRepository repository;
+
+    public RoomServiceImpl(IRoomRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Room findAndEnsureExists(Long roomId) {

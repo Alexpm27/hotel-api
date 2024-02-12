@@ -105,7 +105,7 @@ public class UserServiceImpl implements IUserService {
                 .id(user.getId())
                 .name(user.getName())
                 .lastName(user.getLastName())
-                .build();
+                .email(user.getEmail()).build();
     }
 
     @Override

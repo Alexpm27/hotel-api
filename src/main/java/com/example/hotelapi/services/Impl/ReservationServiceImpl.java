@@ -11,9 +11,6 @@ import com.example.hotelapi.web.dtos.request.CreateReservationRequest;
 import com.example.hotelapi.web.dtos.request.UpdateReservationRequest;
 import com.example.hotelapi.web.dtos.response.BaseResponse;
 import com.example.hotelapi.web.dtos.response.ReservationResponse;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -23,15 +20,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
 public class ReservationServiceImpl implements IReservationService {
 
-    private IReservationRepository repository;
+    private final IReservationRepository repository;
 
-    private IUserService userService;
+    private final IUserService userService;
 
-    private IRoomService roomService;
+    private final IRoomService roomService;
+
+    public ReservationServiceImpl(IReservationRepository repository, IUserService userService, IRoomService roomService) {
+        this.repository = repository;
+        this.userService = userService;
+        this.roomService = roomService;
+    }
 
     @Override
     public BaseResponse create(CreateReservationRequest request, Long userId, Long roomId) {
@@ -111,7 +112,7 @@ public class ReservationServiceImpl implements IReservationService {
                 .collect(Collectors.toList());
     }
 
-    private Reservation from(CreateReservationRequest request, Long userId, Long roomId){
+    private Reservation from(CreateReservationRequest request, Long userId, Long roomId) {
         Reservation reservation = new Reservation();
         reservation.setDateReserved(request.getDateReserved());
         reservation.setHourReserved(request.getHourReserved());

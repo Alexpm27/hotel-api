@@ -30,6 +30,7 @@ public class Room {
     private Double price;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToOne
