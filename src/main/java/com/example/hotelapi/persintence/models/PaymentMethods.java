@@ -20,5 +20,5 @@ public class PaymentMethods {
     @Column(nullable = false, unique = true)
     private Long id;
 
-    private String payment_name;
+    private String paymentName;
 }
