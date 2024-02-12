@@ -11,6 +11,8 @@ import com.example.hotelapi.web.dtos.request.CreateReservationRequest;
 import com.example.hotelapi.web.dtos.request.UpdateReservationRequest;
 import com.example.hotelapi.web.dtos.response.BaseResponse;
 import com.example.hotelapi.web.dtos.response.ReservationResponse;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -21,14 +23,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReservationServiceImpl implements IReservationService {
 
-    private final IReservationRepository repository;
+    private IReservationRepository repository;
 
-    private final IUserService userService;
+    private IUserService userService;
 
-    private final IRoomService roomService;
+    private IRoomService roomService;
 
     @Override
     public BaseResponse create(CreateReservationRequest request, Long userId, Long roomId) {

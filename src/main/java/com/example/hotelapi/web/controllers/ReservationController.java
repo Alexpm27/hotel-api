@@ -5,17 +5,20 @@ import com.example.hotelapi.web.dtos.request.CreateReservationRequest;
 import com.example.hotelapi.web.dtos.request.UpdateReservationRequest;
 import com.example.hotelapi.web.dtos.response.BaseResponse;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
 @RestController("reservation")
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReservationController {
 
-    private final IReservationService service;
+    private IReservationService service;
 
     @PostMapping("create/v1/user/{userId}/room/{roomId}")
     public ResponseEntity<BaseResponse> create(@Valid @RequestBody CreateReservationRequest request,
