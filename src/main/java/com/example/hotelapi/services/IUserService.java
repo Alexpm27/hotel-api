@@ -19,4 +19,6 @@ public interface IUserService {
 
     UserResponse fromUserToUserResponse(User user);
 
+    User findAndEnsureExists(Long userId);
+
 }

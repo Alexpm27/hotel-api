@@ -19,11 +19,19 @@ public class Reservation {
 
     @Column(nullable = false)
     @NotBlank
-    private String date;
+    private String dateReservation;
 
     @Column(nullable = false)
     @NotBlank
-    private String hour;
+    private String hourReservation;
+
+    @Column(nullable = false)
+    @NotBlank
+    private String dateReserved;
+
+    @Column(nullable = false)
+    @NotBlank
+    private String hourReserved;
 
     @Column(nullable = false)
     private Status status;

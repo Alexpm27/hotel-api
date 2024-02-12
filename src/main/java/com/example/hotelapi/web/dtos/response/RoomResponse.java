@@ -13,6 +13,6 @@ public class RoomResponse {
     private Long id;
     private String name;
     private String description;
-    private Float price;
+    private Double price;
     private Status status;
 }

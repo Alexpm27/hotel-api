@@ -67,10 +67,6 @@ public class UserServiceImpl implements IUserService {
                 .httpStatus(HttpStatus.OK).build();
     }
 
-    public User findAndEnsureExists(Long id){
-        return repository.findById(id).orElseThrow(NotFoundException::new);
-    }
-
     private User findUserByEmailAndEnsureExists(String email) {
         return repository.findByEmail(email).orElseThrow(NotFoundException::new);
     }
@@ -95,7 +91,7 @@ public class UserServiceImpl implements IUserService {
 
     private GetReservationResponse from(Reservation reservation){
         return GetReservationResponse.builder()
-                .date(reservation.getDate())
+                .date(reservation.getDateReserved())
                 .status(reservation.getStatus())
                 .id(reservation.getId())
                 .user(fromUserToUserResponse(reservation.getUser()))
@@ -110,6 +106,11 @@ public class UserServiceImpl implements IUserService {
                 .name(user.getName())
                 .lastName(user.getLastName())
                 .build();
+    }
+
+    @Override
+    public User findAndEnsureExists(Long userId){
+        return repository.findById(userId).orElseThrow(NotFoundException::new);
     }
 
     private RoomResponse fromRestaurantToRestaurantResponse(Room room){

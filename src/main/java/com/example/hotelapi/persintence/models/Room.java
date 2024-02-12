@@ -1,4 +1,5 @@
 package com.example.hotelapi.persintence.models;
+import com.example.hotelapi.persintence.enums.Status;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +27,10 @@ public class Room {
     private String description;
 
     @Column(nullable = false)
-    private Integer price;
+    private Double price;
+
+    @Column(nullable = false)
+    private Status status;
 
     @ManyToOne
     private Hotel hotel;
